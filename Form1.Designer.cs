@@ -96,6 +96,30 @@
             Detail.TabIndex = 5;
             Detail.Text = "Detail:";
             // 
+            // lab_humidity
+            // 
+            lab_humidity.AutoSize = true;
+            lab_humidity.BackColor = Color.Transparent;
+            lab_humidity.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
+            lab_humidity.ForeColor = Color.White;
+            lab_humidity.Location = new Point(304, 819);
+            lab_humidity.Name = "lab_humidity";
+            lab_humidity.Size = new Size(129, 28);
+            lab_humidity.TabIndex = 4;
+            lab_humidity.Text = "Humidity:";
+            // 
+            // lab_detail
+            // 
+            lab_detail.AutoSize = true;
+            lab_detail.BackColor = Color.Transparent;
+            lab_detail.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
+            lab_detail.ForeColor = Color.White;
+            lab_detail.Location = new Point(304, 893);
+            lab_detail.Name = "lab_detail";
+            lab_detail.Size = new Size(92, 28);
+            lab_detail.TabIndex = 5;
+            lab_detail.Text = "Detail:";
+            // 
             // btn_close
             // 
             btn_close.BackColor = Color.Transparent;

@@ -47,10 +47,6 @@ namespace Weather_App
                 // Update the UI components with the weather data
                 pic_icon.ImageLocation = "https://openweathermap.org/img/w/" + info.weather[0].icon + ".png";
                 lab_condition.Text = info.weather[0].main;
-                lab_detail.Text = info.weather[0].description;
-                lab_sunset.Text = UnixTimeStampToDateTime(info.sys.sunset).ToString();
-                lab_sunrise.Text = UnixTimeStampToDateTime(info.sys.sunrise).ToString();
-                lab_windspeed.Text = info.wind.speed.ToString();
                 lab_pressure.Text = info.main.pressure.ToString();
             }
         }
