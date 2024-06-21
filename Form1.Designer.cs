@@ -52,11 +52,11 @@
             // TbCity
             // 
             TbCity.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
-            TbCity.Location = new Point(531, 363);
+            TbCity.Location = new Point(465, 367);
             TbCity.Name = "TbCity";
             TbCity.Size = new Size(536, 35);
             TbCity.TabIndex = 0;
-            TbCity.Text = "boston";
+            TbCity.TextChanged += TbCity_TextChanged;
             // 
             // lab_City
             // 
@@ -76,7 +76,7 @@
             Btn_Search.FlatStyle = FlatStyle.Flat;
             Btn_Search.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             Btn_Search.ForeColor = Color.White;
-            Btn_Search.Location = new Point(1192, 362);
+            Btn_Search.Location = new Point(1161, 370);
             Btn_Search.Name = "Btn_Search";
             Btn_Search.Size = new Size(112, 34);
             Btn_Search.TabIndex = 2;
@@ -96,30 +96,6 @@
             Detail.TabIndex = 5;
             Detail.Text = "Detail:";
             // 
-            // lab_humidity
-            // 
-            lab_humidity.AutoSize = true;
-            lab_humidity.BackColor = Color.Transparent;
-            lab_humidity.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
-            lab_humidity.ForeColor = Color.White;
-            lab_humidity.Location = new Point(304, 819);
-            lab_humidity.Name = "lab_humidity";
-            lab_humidity.Size = new Size(129, 28);
-            lab_humidity.TabIndex = 4;
-            lab_humidity.Text = "Humidity:";
-            // 
-            // lab_detail
-            // 
-            lab_detail.AutoSize = true;
-            lab_detail.BackColor = Color.Transparent;
-            lab_detail.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
-            lab_detail.ForeColor = Color.White;
-            lab_detail.Location = new Point(304, 893);
-            lab_detail.Name = "lab_detail";
-            lab_detail.Size = new Size(92, 28);
-            lab_detail.TabIndex = 5;
-            lab_detail.Text = "Detail:";
-            // 
             // btn_close
             // 
             btn_close.BackColor = Color.Transparent;
@@ -136,12 +112,14 @@
             // pic_icon
             // 
             pic_icon.BackColor = Color.Transparent;
+            pic_icon.Enabled = false;
             pic_icon.Location = new Point(1210, 502);
             pic_icon.Name = "pic_icon";
             pic_icon.Size = new Size(363, 369);
             pic_icon.SizeMode = PictureBoxSizeMode.StretchImage;
             pic_icon.TabIndex = 7;
             pic_icon.TabStop = false;
+            pic_icon.Visible = false;
             // 
             // Condition
             // 
@@ -304,6 +282,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pic_icon).EndInit();
             ResumeLayout(false);
             PerformLayout();
