@@ -9,13 +9,13 @@ namespace Weather_App
 {
     public partial class Form1 : Form
     {
+        string APIKey = "01cb1f0769f6a1e7c3634ec82dd4c23b";
+        string bingApiKey = "1514f1ed5a9d411ea7d3ce5dcd611fcd"; // Replace with your Bing API key
+
         public Form1()
         {
             InitializeComponent();
         }
-
-        string APIKey = "01cb1f0769f6a1e7c3634ec82dd4c23b";
-        string unsplashApiKey = "nr57jTxmbhSsPRgMrU1P_nP3h-OOeoQ0ZTObjqtm-2o";
 
         private void lab_Condition_Click(object sender, EventArgs e) { }
 
@@ -26,21 +26,44 @@ namespace Weather_App
 
         private void getWeather()
         {
-            using (WebClient web = new WebClient())
+            try
             {
-                string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}", TbCity.Text, APIKey);
-                var json = web.DownloadString(url);
-                WeatherInfo.root info = JsonConvert.DeserializeObject<WeatherInfo.root>(json);
+                using (WebClient web = new WebClient())
+                {
+                    string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units=imperial", TbCity.Text, APIKey);
+                    var json = web.DownloadString(url);
+                    WeatherInfo.root info = JsonConvert.DeserializeObject<WeatherInfo.root>(json);
 
-                pic_icon.ImageLocation = "https://openweathermap.org/img/w/" + info.weather[0].icon + ".png";
-                lab_condition.Text = info.weather[0].main;
-                lab_detail.Text = info.weather[0].description;
-                lab_sunset.Text = UnixTimeStampToDateTime(info.sys.sunset).ToString();
-                lab_sunrise.Text = UnixTimeStampToDateTime(info.sys.sunrise).ToString();
-                lab_windspeed.Text = info.wind.speed.ToString();
-                lab_pressure.Text = info.main.pressure.ToString();
+                    pic_icon.ImageLocation = "https://openweathermap.org/img/w/" + info.weather[0].icon + ".png";
+                    lab_condition.Text = info.weather[0].main;
+                    lab_detail.Text = info.weather[0].description;
+                    lab_temperature.Text = $"{info.main.temp}°F"; // Display temperature in Fahrenheit
+                    lab_sunset.Text = UnixTimeStampToDateTime(info.sys.sunset).ToString();
+                    lab_sunrise.Text = UnixTimeStampToDateTime(info.sys.sunrise).ToString();
+                    lab_windspeed.Text = info.wind.speed.ToString();
+                    lab_pressure.Text = info.main.pressure.ToString();
 
-                ChangeBackgroundImage(info);
+                    ChangeBackgroundImage(info);
+                }
+            }
+            catch (WebException ex)
+            {
+                if (ex.Response is HttpWebResponse response && response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    MessageBox.Show("The city you have entered is incorrect. Please check the city name and try again.", "City Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    using (var reader = new StreamReader(ex.Response.GetResponseStream()))
+                    {
+                        string responseText = reader.ReadToEnd();
+                        MessageBox.Show("Error: " + responseText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -69,33 +92,30 @@ namespace Weather_App
 
         private string GetImageUrl(WeatherInfo.root weatherInfo)
         {
-            // Determine the part of the day and weather condition
-            DateTime sunrise = UnixTimeStampToDateTime(weatherInfo.sys.sunrise);
-            DateTime sunset = UnixTimeStampToDateTime(weatherInfo.sys.sunset);
-            DateTime now = DateTime.Now;
-            string timeOfDay;
-
-            if (now >= sunrise && now < sunset)
-            {
-                timeOfDay = "day";
-            }
-            else
-            {
-                timeOfDay = "night";
-            }
-
+            string city = TbCity.Text.ToLower();
             string condition = weatherInfo.weather[0].main.ToLower();
-            string description = weatherInfo.weather[0].description.ToLower();
-            string query = $"{TbCity.Text} {condition} {description} {timeOfDay}";
+            string query = $"{city} {condition} weather";
 
-            // Unsplash API
-            string unsplashUrl = $"https://api.unsplash.com/photos/random?query={query}&client_id={unsplashApiKey}";
+            string bingUrl = $"https://api.bing.microsoft.com/v7.0/images/search?q={Uri.EscapeDataString(query)}&count=1";
 
             using (WebClient web = new WebClient())
             {
-                var json = web.DownloadString(unsplashUrl);
-                dynamic result = JsonConvert.DeserializeObject(json);
-                return result.urls.full;
+                web.Headers.Add("Ocp-Apim-Subscription-Key", bingApiKey);
+                try
+                {
+                    var json = web.DownloadString(bingUrl);
+                    dynamic result = JsonConvert.DeserializeObject(json);
+                    return result.value[0].contentUrl;
+                }
+                catch (WebException ex)
+                {
+                    using (var reader = new StreamReader(ex.Response.GetResponseStream()))
+                    {
+                        string responseText = reader.ReadToEnd();
+                        MessageBox.Show("Error: " + responseText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    throw; // Rethrow the exception after logging
+                }
             }
         }
 

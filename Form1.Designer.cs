@@ -2,15 +2,8 @@
 {
     partial class Form1
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,12 +15,9 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             TbCity = new TextBox();
             lab_City = new Label();
@@ -46,7 +36,12 @@
             lab_pressure = new Label();
             lab_condition = new Label();
             lab_detail = new Label();
+            lab_temperature = new Label();
+            label1 = new Label();
+            panel1 = new TransparentPanel();
+            contextMenuStrip1 = new ContextMenuStrip(components);
             ((System.ComponentModel.ISupportInitialize)pic_icon).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // TbCity
@@ -90,7 +85,7 @@
             Detail.BackColor = Color.Transparent;
             Detail.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             Detail.ForeColor = Color.White;
-            Detail.Location = new Point(294, 729);
+            Detail.Location = new Point(12, 144);
             Detail.Name = "Detail";
             Detail.Size = new Size(92, 28);
             Detail.TabIndex = 5;
@@ -127,7 +122,7 @@
             Condition.BackColor = Color.Transparent;
             Condition.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             Condition.ForeColor = Color.White;
-            Condition.Location = new Point(294, 663);
+            Condition.Location = new Point(12, 63);
             Condition.Name = "Condition";
             Condition.Size = new Size(153, 28);
             Condition.TabIndex = 8;
@@ -140,7 +135,7 @@
             lab_sunrise.BackColor = Color.Transparent;
             lab_sunrise.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             lab_sunrise.ForeColor = Color.White;
-            lab_sunrise.Location = new Point(491, 787);
+            lab_sunrise.Location = new Point(201, 218);
             lab_sunrise.Name = "lab_sunrise";
             lab_sunrise.Size = new Size(65, 28);
             lab_sunrise.TabIndex = 9;
@@ -152,7 +147,7 @@
             sunrise.BackColor = Color.Transparent;
             sunrise.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             sunrise.ForeColor = Color.White;
-            sunrise.Location = new Point(294, 787);
+            sunrise.Location = new Point(12, 218);
             sunrise.Name = "sunrise";
             sunrise.Size = new Size(114, 28);
             sunrise.TabIndex = 10;
@@ -164,7 +159,7 @@
             sunset.BackColor = Color.Transparent;
             sunset.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             sunset.ForeColor = Color.White;
-            sunset.Location = new Point(294, 858);
+            sunset.Location = new Point(12, 294);
             sunset.Name = "sunset";
             sunset.Size = new Size(107, 28);
             sunset.TabIndex = 11;
@@ -176,7 +171,7 @@
             lab_sunset.BackColor = Color.Transparent;
             lab_sunset.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             lab_sunset.ForeColor = Color.White;
-            lab_sunset.Location = new Point(491, 858);
+            lab_sunset.Location = new Point(201, 294);
             lab_sunset.Name = "lab_sunset";
             lab_sunset.Size = new Size(65, 28);
             lab_sunset.TabIndex = 12;
@@ -188,7 +183,7 @@
             Pressure.BackColor = Color.Transparent;
             Pressure.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             Pressure.ForeColor = Color.White;
-            Pressure.Location = new Point(763, 717);
+            Pressure.Location = new Point(478, 218);
             Pressure.Name = "Pressure";
             Pressure.Size = new Size(132, 28);
             Pressure.TabIndex = 13;
@@ -200,7 +195,7 @@
             windspeed.BackColor = Color.Transparent;
             windspeed.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             windspeed.ForeColor = Color.White;
-            windspeed.Location = new Point(763, 663);
+            windspeed.Location = new Point(478, 144);
             windspeed.Name = "windspeed";
             windspeed.Size = new Size(166, 28);
             windspeed.TabIndex = 14;
@@ -212,7 +207,7 @@
             lab_windspeed.BackColor = Color.Transparent;
             lab_windspeed.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             lab_windspeed.ForeColor = Color.White;
-            lab_windspeed.Location = new Point(992, 663);
+            lab_windspeed.Location = new Point(687, 144);
             lab_windspeed.Name = "lab_windspeed";
             lab_windspeed.Size = new Size(65, 28);
             lab_windspeed.TabIndex = 15;
@@ -224,7 +219,7 @@
             lab_pressure.BackColor = Color.Transparent;
             lab_pressure.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             lab_pressure.ForeColor = Color.White;
-            lab_pressure.Location = new Point(992, 717);
+            lab_pressure.Location = new Point(687, 218);
             lab_pressure.Name = "lab_pressure";
             lab_pressure.Size = new Size(65, 28);
             lab_pressure.TabIndex = 16;
@@ -236,7 +231,7 @@
             lab_condition.BackColor = Color.Transparent;
             lab_condition.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             lab_condition.ForeColor = Color.White;
-            lab_condition.Location = new Point(491, 663);
+            lab_condition.Location = new Point(201, 63);
             lab_condition.Name = "lab_condition";
             lab_condition.Size = new Size(65, 28);
             lab_condition.TabIndex = 17;
@@ -248,11 +243,62 @@
             lab_detail.BackColor = Color.Transparent;
             lab_detail.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
             lab_detail.ForeColor = Color.White;
-            lab_detail.Location = new Point(491, 729);
+            lab_detail.Location = new Point(201, 144);
             lab_detail.Name = "lab_detail";
             lab_detail.Size = new Size(65, 28);
             lab_detail.TabIndex = 18;
             lab_detail.Text = "N/A";
+            // 
+            // lab_temperature
+            // 
+            lab_temperature.AutoSize = true;
+            lab_temperature.BackColor = Color.Transparent;
+            lab_temperature.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold);
+            lab_temperature.Location = new Point(687, 63);
+            lab_temperature.Name = "lab_temperature";
+            lab_temperature.Size = new Size(65, 28);
+            lab_temperature.TabIndex = 19;
+            lab_temperature.Text = "N/A";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("MS UI Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(478, 63);
+            label1.Name = "label1";
+            label1.Size = new Size(181, 28);
+            label1.TabIndex = 20;
+            label1.Text = "Temperature:";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(Condition);
+            panel1.Controls.Add(lab_pressure);
+            panel1.Controls.Add(lab_temperature);
+            panel1.Controls.Add(Pressure);
+            panel1.Controls.Add(lab_windspeed);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(windspeed);
+            panel1.Controls.Add(lab_condition);
+            panel1.Controls.Add(Detail);
+            panel1.Controls.Add(lab_detail);
+            panel1.Controls.Add(sunrise);
+            panel1.Controls.Add(lab_sunrise);
+            panel1.Controls.Add(sunset);
+            panel1.Controls.Add(lab_sunset);
+            panel1.Location = new Point(292, 552);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(794, 343);
+            panel1.TabIndex = 21;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.ImageScalingSize = new Size(24, 24);
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
             // 
             // Form1
             // 
@@ -261,20 +307,9 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1664, 1119);
-            Controls.Add(lab_detail);
-            Controls.Add(lab_condition);
-            Controls.Add(lab_pressure);
-            Controls.Add(lab_windspeed);
-            Controls.Add(windspeed);
-            Controls.Add(Pressure);
-            Controls.Add(lab_sunset);
-            Controls.Add(sunset);
-            Controls.Add(sunrise);
-            Controls.Add(lab_sunrise);
-            Controls.Add(Condition);
+            Controls.Add(panel1);
             Controls.Add(pic_icon);
             Controls.Add(btn_close);
-            Controls.Add(Detail);
             Controls.Add(Btn_Search);
             Controls.Add(lab_City);
             Controls.Add(TbCity);
@@ -284,6 +319,8 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pic_icon).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -307,5 +344,9 @@
         private Label lab_pressure;
         private Label lab_condition;
         private Label lab_detail;
+        private Label lab_temperature;
+        private Label label1;
+        private TransparentPanel panel1; // Update this to use TransparentPanel instead of Panel
+        private ContextMenuStrip contextMenuStrip1;
     }
 }
