@@ -11,7 +11,7 @@ namespace Weather_App
     {
         // API keys for OpenWeatherMap and Bing
         string APIKey = "01cb1f0769f6a1e7c3634ec82dd4c23b";
-        string bingApiKey = "1514f1ed5a9d411ea7d3ce5dcd611fcd"; // Replace with your Bing API key
+        string bingApiKey = "1514f1ed5a9d411ea7d3ce5dcd611fcd"; // Bing API key
 
         public Form1()
         {
